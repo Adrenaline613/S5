@@ -26,7 +26,7 @@ pip install -r requirements.txt
 2.  Modify the path settings in the `data/moda_spindle/moda_to_numpy.py` file, then run `moda_to_numpy.py`.
 
 ## Train & Test
-The `weight` directory stores the weights of our trained model. If you do not want to train, you can go directly to the [Testing](#section Testing) step to start testing.
+The `weight` directory stores the weights of our trained model. If you do not want to train, you can go directly to the Testing step to start testing.
 
 ### Contrastive Learning
 1. Change `data_dir` in `config/mass_cl_config.json` to the location where you saved your MASS after processing it.
