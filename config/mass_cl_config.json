@@ -1,0 +1,54 @@
+{
+    "seed": 20250715,
+
+    "training_mode": "pretrain",
+
+    "data": {
+        "name": "MASS",
+        "params": {
+            "data_dir": "E:/dataset/MASS/release_test",
+            "split_ratio": [0.8, 0.2],
+            "mode": "fixed",
+            "shuffle": true
+        },
+        "batch_size": 512
+    },
+
+    "model": {
+        "name": "S3Net",
+        "params": {
+            "in_channels": 1,
+            "num_classes": 2,
+            "output_pool_window": 42
+        }
+    },
+
+    "trainer": {
+        "name": "TrainerCl",
+        "params": {
+            "num_epochs": 200,
+            "device": "auto",
+            "ckpt_save_mode": "best",
+            "print_interval": 10,
+            "patience": 20,
+            "early_stop_metric": "val_loss",
+            "writer": true
+        }
+    },
+
+    "optimizer": {
+        "name": "Adam",
+        "params": {
+            "lr": 5e-4,
+            "weight_decay": 1e-4
+        }
+    },
+
+    "loss": {
+        "name": "SupConLoss",
+        "params": {
+            "temperature": 0.07
+        }
+    }
+
+}

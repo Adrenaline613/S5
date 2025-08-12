@@ -1,0 +1,59 @@
+{
+    "seed": 20250715,
+
+    "training_mode": "fullyfinetune",
+
+    "data": {
+        "name": "MODA",
+        "params": {
+            "data_dir": "E:/dataset/MODA/release_test/train",
+            "split_ratio": [120, 24],
+            "mode": "k_fold",
+            "shuffle": true
+        },
+        "batch_size": 128
+    },
+
+    "model": {
+        "name": "S3Net",
+        "params": {
+            "in_channels": 1,
+            "num_classes": 2,
+            "output_pool_window": 42
+        },
+        "ckpt_path": "weight/MASS_S3Net_pretrain_20250715/fold1_best.ckpt"
+    },
+
+    "trainer": {
+        "name": "TrainerSp",
+        "params": {
+            "num_epochs": 400,
+            "device": "auto",
+            "ckpt_save_mode": "best",
+            "print_interval": 1,
+            "patience": 100,
+            "early_stop_metric": "2-f1m",
+            "overlap_step": 0.05,
+            "writer": true,
+            "postprocess": true
+        }
+    },
+
+    "optimizer": {
+        "name": "Adam",
+        "params": {
+            "lr": 5e-3,
+            "weight_decay": 0
+        }
+    },
+
+    "loss": {
+        "name": "DiceFocalLoss",
+        "params": {
+            "dice_weight": 0.7,
+            "dice_class_weight": true,
+            "alpha": 0.9,
+            "gamma": 2
+        }
+    }
+}

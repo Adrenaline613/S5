@@ -1,0 +1,10 @@
+torch==2.3.1
+lxml
+numpy
+pandas
+prettytable
+pyEDFlib
+PyQt5
+scikit_learn
+scipy
+tqdm
