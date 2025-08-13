@@ -57,6 +57,7 @@ python inference.py
 
 ## GUI
 GUI can be obtained from another repository. https://github.com/Adrenaline613/SpindleDetector
+![](./fig/GUI.png)
 
 ## Code Structure
 ```
