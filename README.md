@@ -1,5 +1,5 @@
 # S5
-This repo is the official implementation of “***S5: Self-supervised Enhanced Sleep Spindle Detection in Single-channel EEG Based on Time Series Segmentation Network***”.
+This repo is the official implementation of “***S5: Self-Supervised Learning Boosts Sleep Spindle Detection in Single-Channel EEG via Temporal Segmentation***”.
 
 ## Model Architecture
 ![](./fig/model_arch.jpg)
