@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 from scipy.stats import hmean
+from scipy.optimize import linear_sum_assignment
 from sklearn.metrics import confusion_matrix
 import prettytable
 
@@ -206,12 +207,12 @@ def get_true_positives(spindles_detected, spindles_gs, overlap_thresholds):
     if (spindles_detected.shape[0] == 0) or (spindles_gs.shape[0] == 0):
         return np.zeros_like(overlap_thresholds, dtype=np.int8), np.zeros_like(overlap_thresholds)
 
-    # Get the overlaps in format (n_detected_spindles, n_gs_spindles)
-    overlap = get_overlap(spindles_detected, spindles_gs)
-    # Make sure there is at max one detection per gs event
-    overlap_valid = np.where(overlap == np.max(overlap, axis=0), overlap, 0)
-    # Make sure there is at max one gs event per detection
-    overlap_valid = np.where(overlap_valid == np.max(overlap_valid, axis=1).reshape(-1, 1), overlap_valid, 0)
+    # Use Hungarian algorithm to obtain a one-to-one matching that maximizes total overlap.
+    # linear_sum_assignment minimizes cost, so pass -overlap to maximize overlap.
+    row_ind, col_ind = linear_sum_assignment(-overlap)
+    overlap_valid = np.zeros_like(overlap)
+    for i, j in zip(row_ind, col_ind):
+        overlap_valid[i, j] = overlap[i, j]
 
     iou_sum = np.empty_like(overlap_thresholds)
     n_tp = np.empty_like(overlap_thresholds, dtype=np.int8)
