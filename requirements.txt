@@ -4,6 +4,7 @@ numpy
 pandas
 prettytable
 pyEDFlib
+mne
 PyQt5
 scikit_learn
 scipy
