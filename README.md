@@ -57,6 +57,8 @@ inference.py contains a simple demonstration of the entire process from data loa
 
 ![](./fig/inference.png)
 
+Note that the trained model was obtained with an input length of 115s, but the input length for the demonstration inference was 30s. This causes only a very small performance degradation, but can significantly simplify the detection process.
+
 ## GUI
 GUI can be obtained from another repository. https://github.com/Adrenaline613/SpindleDetector
 ![](./fig/GUI.png)
