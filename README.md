@@ -48,11 +48,13 @@ python train.py --config config/moda_sp_config.json
 python test.py
 ```
 
-### Inference
+### Inference (Detect sleep spindles using your own data)
 We used a single subject (only EEG data retained) from the publicly available SHHS1(https://sleepdata.org/datasets/shhs) dataset on the NSRR website to demonstrate the actual inference steps.
 ```
 python inference.py
 ```
+inference.py contains a simple demonstration of the entire process from data loading, spindle wave detection, and spindle wave feature calculation.
+
 ![](./fig/inference.png)
 
 ## GUI
